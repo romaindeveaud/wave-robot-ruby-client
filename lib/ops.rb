@@ -55,7 +55,6 @@ end
 class OpBasedDocument
 end
 
-# TODO: change class name to _ContextImpl? See ruby standards.
 class ContextImpl
 end
 
