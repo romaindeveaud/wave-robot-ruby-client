@@ -22,19 +22,19 @@ class AbstractRobot
   @@profile_url = ''
   @@cron_jobs = {}
 
-  def self.set_name(name)
+  def set_name(name)
     @@name = name
   end
 
-  def self.set_image_url(url)
+  def set_image_url(url)
     @@image_url = url
   end
 
-  def self.set_profile_url(url)
+  def set_profile_url(url)
     @@profile_url = url
   end
 
-  def self.add_cron_job(name, timer)
+  def add_cron_job(name, timer)
     @@cron_jobs[name] = timer
   end
 
