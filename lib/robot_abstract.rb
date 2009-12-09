@@ -39,7 +39,7 @@ class AbstractRobot
   end
 
   def handled_events
-    RUBY_ROBOT_EVENTS.select { |e| self.respond_to(e) }
+    RUBY_ROBOT_EVENTS.select { |e| self.respond_to?(e) }
   end
 
   def capabilities
