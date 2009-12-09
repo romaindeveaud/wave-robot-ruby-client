@@ -7,6 +7,7 @@
 require 'events'
 require 'model'
 require 'ops'
+require 'rubygems'
 require 'json'
 require 'util'
 
@@ -45,14 +46,14 @@ class AbstractRobot
   def capabilities
     # Return this robot's capabilities as an XML string.
     lines = ['<w:capabilities>']
-    handled_events.each { |e| lines.push "<w:capability name='#{e}'/>" }
+    handled_events.each { |e| lines.push "<w:capability name=\"#{e}\"/>" }
     lines.push '</w:capabilities>'
 
-    robot_attrs = " name='#{@@name}'"
-    robot_attrs += " imageurl='#{@@image_url}'" if @@image_url != ''
-    robot_attrs += " profileurl='#{@@profile_url}'" if @@profile_url != ''
+    robot_attrs = " name=\"#{@@name}\""
+    robot_attrs += " imageurl=\"#{@@image_url}\"" unless @@image_url == ''
+    robot_attrs += " profileurl=\"#{@@profile_url}\"" unless @@profile_url == ''
 
     lines.push("<w:profile#{robot_attrs}/>")
-    return '<?xml version="1.0"?>\n'+'<w:robot xmlns:w="http://wave.google.com/extensions/robots/1.0">\n'+lines.join('\n')+'\n</w:robot>\n'
+    return "<?xml version=\"1.0\"?>\n"+"<w:robot xmlns:w=\"http://wave.google.com/extensions/robots/1.0\">\n"+lines.join("\n")+"\n</w:robot>\n"
   end
 end

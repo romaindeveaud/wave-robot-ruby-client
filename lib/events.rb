@@ -36,11 +36,11 @@ RUBY_ROBOT_EVENTS = [
 
 # Properties for WAVELET_PARTICIPANTS_CHANGED, WAVELET_SELF_ADDED and
 # WAVELET_SELF_REMOVED
-PARTICIPANTS_ADDED = 'participantsAdded'
-PARTICIPANTS_REMOVED = 'participantsRemoved'
+# PARTICIPANTS_ADDED = 'participantsAdded'
+# PARTICIPANTS_REMOVED = 'participantsRemoved'
 
 # Properties for WAVELET_TITLE_CHANGED
-TITLE = 'title'
+# TITLE = 'title'
 
 # Properties for WAVELET_VERSION_CHANGED
-VERSION = 'version'
+# VERSION = 'version'
