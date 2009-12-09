@@ -49,11 +49,31 @@ class AbstractRobot
     handled_events.each { |e| lines.push "<w:capability name=\"#{e}\"/>" }
     lines.push '</w:capabilities>'
 
+    unless @@cron_jobs.empty?
+      lines.push '<w:crons>'
+      @@cron_jobs.each_pair { |n,t| lines.push "<w:cron path=\"#{n}\" timerinseconds=\"#{t}\"/>" }
+      lines.push '</w:crons>'
+    end
+
     robot_attrs = " name=\"#{@@name}\""
     robot_attrs += " imageurl=\"#{@@image_url}\"" unless @@image_url == ''
     robot_attrs += " profileurl=\"#{@@profile_url}\"" unless @@profile_url == ''
 
     lines.push("<w:profile#{robot_attrs}/>")
     return "<?xml version=\"1.0\"?>\n"+"<w:robot xmlns:w=\"http://wave.google.com/extensions/robots/1.0\">\n"+lines.join("\n")+"\n</w:robot>\n"
+  end
+
+  def profile
+    # Returns JSON body for any profile handler.
+    #
+    # Returns :
+    #   String of JSON to be sent as a response.
+
+    data = {}
+    data['name'] = @@name
+    data['imageUrl'] = @@image_url
+    data['profileUrl'] = @@profile_url
+    data['javaClass'] = 'com.google.wave.api.ParticipantProfile'
+    return data.to_json
   end
 end

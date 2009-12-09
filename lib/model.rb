@@ -11,6 +11,16 @@ require 'logger'
 require 'document'
 
 class Wave
+# Models a single wave instance.
+#
+# A single wave is composed of its id and any wavelet ids that belong to it.
+
+  def initialize(json)
+# Inits this wave with JSON data.
+
+    @raw_data = JSON.parse json
+  end
+
 end
 
 class Wavelet
